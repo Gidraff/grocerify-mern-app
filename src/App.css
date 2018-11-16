@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .App-logo {
@@ -29,4 +29,78 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.list {
+  display: inline;
+}
+
+.list_item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bought_style {
+  text-decoration: line-through;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn_container {
+  display: inline;
+  padding: 0.4em;
+  margin: 0 0.1em;
+}
+
+.btn_buy {
+  float: right;
+  left: 50%;
+}
+
+.list_container {
+  width: 50%;
+  margin: 1% 0 0 20%;
+  padding: 5%;
+  display: inline-block;
+}
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin: 1px;
+  padding: .175rem .65rem;
+  outline: none;
+}
+
+.title {
+  font-size:20px;
+}
+
+div.form {
+  margin-top: 4em;
+  display: block;
+  text-align: center;
+}
+
+.form_text {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+form {
+  margin-top: 0.8rem;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.submit {
+  margin-top: 0.8rem;
+  font-size: 1rem;
 }
