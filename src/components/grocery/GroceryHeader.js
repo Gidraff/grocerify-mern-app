@@ -1,19 +1,15 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-const GroceryHeader = (props) => {
+const GroceryHeader = ({handleClick}) => {
 	return (
 		<header>
 			<div className="title cart">
-				<b>Groceries:
-					<button
-						className="btn btn-primary"
-						onClick={props.handleClick}
-						type="button" ><b>Add+</b>
-					</button>
-				</b>
+				<button
+					className="btn btn-light"
+					onClick={handleClick}
+					type="button" ><b>New Item</b>
+				</button>
 				<i className="fas fa-cart-plus fa-lg "></i>
 			</div>
-			{/* <i className="fas fa-cart-plus fa-lg cart"></i> */}
 		</header>
 	);
 };

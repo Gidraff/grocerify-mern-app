@@ -1,22 +1,18 @@
 import React, { Component } from 'react'
-import swal from 'sweetalert';
-import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux';
 import GroceryList from './GroceryList';
 import * as groceryActions from '../../actions/groceryActions';
 
 class ManageGroceryPage extends Component {
-	state = {
-			groceries: this.props.groceries
-	};
 
 	componentDidMount() {
 		this.props.groceryActions.fetchGroceries();
 	}
 
 	componentDidUpdate(prevProps) {
-		if(this.props.groceries.length !== prevProps.groceries.length) {
+		if(this.props.groceries !== prevProps.groceries) {
 			this.setState({groceries: this.props.groceries});
 		}
 	}
@@ -25,20 +21,27 @@ class ManageGroceryPage extends Component {
 		this.props.groceryActions.deleteItem(id)
 	}
 
-	buyOrUnBuy = (id, updateItem) => {
-		this.props.groceryActions.buyOrUnBuy(id, updateItem)
+	handleBuyOrDrop = (id) => {
+		this.props.groceryActions.buyOrDrop(id)
 	}
 
 	redirectToAddForm = () => {
-    this.props.history.push('/add');
+    this.props.history.push('/Add');
   };
 
 	render() {
+		if(this.props.groceries.length < 0) {
+			return (
+				<div>
+					<span>No Groceries available</span>
+				</div>
+			)
+		}
 		return (
 			<div>
 				<GroceryList
-					list={this.state.groceries}
-					handleBuy={this.buyOrUnBuy}
+					groceries={this.props.groceries}
+					handleBuy={this.handleBuyOrDrop}
 					handleDelete={this.handleDelete}
 					handleClick={this.redirectToAddForm}
 				/>
@@ -48,11 +51,11 @@ class ManageGroceryPage extends Component {
 }
 
 const mapStateToProps = state => ({
-	groceries: state.groceries
+		groceries: state.groceries
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	groceryActions: bindActionCreators(groceryActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageGroceryPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ManageGroceryPage))

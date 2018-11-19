@@ -1,3 +1,4 @@
-export default {
-	groceries: []
+export const initialState = {
+	groceries: [],
+	errors: {},
 };

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as actions from './types';
-// import instance from '../config/axiosConfig';
+
 
 const HOST = 'localhost';
 const PORT = 8000;
@@ -20,25 +20,28 @@ export function addGroceryItem(groceryData) {
 					type: actions.ADD_GROCERY_ITEM,
 					payload: newItem.data
 				});
-			}).catch(err => {
-				console.log(err);
+			}).catch(error => {
+				dispatch({
+					type: actions.RECIEVE_ERROR,
+					payload: error
+				});
 			});
 	};
 }
 
-export function buyOrUnBuy(id, updateItem) {
+export function buyOrDrop(id) {
 	return (dispatch) => {
-		axios.put(`${BASE_URL}/groceries/${id}`, updateItem).
-			then(res => {
+		axios.put(`${BASE_URL}/groceries/${id}`, {})
+			.then(res => {
 				dispatch({
 					type: actions.UPDATE_GROCERY_ITEM,
-					payload: {
-						id: id,
-						data: updateItem
-					}
+					payload: res.data.item
 				});
-			}).catch(err => {
-				console.log('errr', err);
+			}).catch(error => {
+				dispatch({
+					type: actions.RECIEVE_ERROR,
+					payload: error
+				});
 			});
 	};
 }
@@ -46,12 +49,17 @@ export function buyOrUnBuy(id, updateItem) {
 export function deleteItem(id){
 	return (dispatch) => {
 		axios.delete(`${BASE_URL}/groceries/${id}`)
-			.then(res => dispatch({
-				type: actions.DELETE_GROCERY_ITEM,
-				payload: id
-			})
-			).catch(err => {
-				console.log('vhbdjbcdj', err);
+			.then(() => {
+				dispatch({
+					type: actions.DELETE_GROCERY_ITEM,
+					payload: id
+				});
+			}
+			).catch(error => {
+				dispatch({
+					type: actions.RECIEVE_ERROR,
+					payload: error
+				});
 			});
 	};
 }
@@ -62,8 +70,11 @@ export function fetchGroceries() {
 		axios.get(`${BASE_URL}/groceries`)
 			.then(res => {
 				dispatch(loadGroceryItemsSuccess([...res.data]));
-			}).catch(err => {
-				console.log(err);
+			}).catch(error => {
+				dispatch({
+					type: actions.RECIEVE_ERROR,
+					error
+				});
 			});
 	};
 }
