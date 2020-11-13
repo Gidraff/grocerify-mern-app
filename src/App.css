@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-image: image("https://cdn.pixabay.com/photo/2016/05/24/13/29/olive-oil-1412361_1280.jpg");
 }
 
 .App-logo {
@@ -29,4 +30,150 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.list {
+  display: inline;
+}
+
+.list_item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bought_style {
+  text-decoration: line-through;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn_container {
+  display: inline;
+  padding: 0.4em;
+  margin: 0 0.1em;
+}
+
+.btn_buy {
+  float: right;
+  left: 50%;
+}
+
+.list_container {
+  width: 50%;
+  margin: 0 26%;
+  padding: 5%;
+  display: inline-block;
+}
+
+.cart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin: 1px;
+  padding: .175rem .65rem;
+  outline: none;
+  /* background-color: #845EC2; */
+}
+
+.title {
+  font-size:20px;
+}
+
+div.form {
+  margin-top: 4em;
+  display: block;
+  text-align: center;
+}
+
+.form_text {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+form {
+  margin-top: 0.8rem;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.submit {
+  background-color: #00C0A3;
+  margin-top: 0.8rem;
+  font-size: 1rem;
+}
+
+.nav_menu {
+  display: inline-block;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 2em;
+}
+
+a.nav_link {
+  border-radius: 0.8em;
+  color: black;
+  text-decoration: none;
+  padding: 0.5rem;
+  background-color: #edf1f6;
+}
+
+
+.nav_link:hover {
+  box-shadow: 0 8px 6px -6px black;
+  background-color: #00C9A7;
+  color: white;
+}
+
+
+.welcome_view {
+  width: 80%;
+  margin: auto;
+  margin-top: 2em;
+  background-image: url("https://images.unsplash.com/photo-1418669112725-fb499fb61127?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c88fbba6cc98db673a00a4551b61bf9e&auto=format&fit=crop&w=1950&q=80");
+  background-color: #cccccc;
+  height: 80vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.welcome_text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+a.start_btn {
+  border-radius: 0.8em;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+  background-color: #00C9A7;
+}
+
+a.start_btn:hover {
+  border-radius: 0.8em;
+  color: blue;
+  text-decoration: none;
+  padding: 0.5rem;
+  background-color: #00C9A7;
+}
+
+.not_found {
+  width: 60%;
+  margin: 10em auto;
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.4rem;
+  /* display: inline-block; */
 }

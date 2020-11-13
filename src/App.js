@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
+import GroceryPage from './components/grocery/GroceryPage';
+import ManageGroceryPage from './components/grocery/ManageGroceryPage';
+import NavBar from './components/grocery/Navigation';
+import NotFound from './components/grocery/NotFound';
+import Home from './components/grocery/Home';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<Router>
+				<div className="App container-fluid">
+					<NavBar />
+					<Switch>
+						<Route exact path="/Home" component={Home} />
+						<Route exact path="/">
+							<Redirect to="/Home" />
+						</Route>
+						<Route exact path="/Add" component={GroceryPage} />
+						<Route exact path="/Groceries" component={ManageGroceryPage} />
+						<Route component={NotFound} />
+					</Switch>
+				</div>
+			</Router>
+		);
+	}
 }
 
 export default App;
